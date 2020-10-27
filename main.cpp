@@ -1,5 +1,4 @@
 //main file - main.cpp
-// header file - assign3.h
 /*
 Full name: Ariel Gutierrez
 Student ID: 2318163

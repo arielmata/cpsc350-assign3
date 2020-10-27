@@ -1,4 +1,4 @@
-//template class - GenStack.h
+//template class: header and implementation file - GenStack.h
 /*
 Full name: Ariel Gutierrez
 Student ID: 2318163
