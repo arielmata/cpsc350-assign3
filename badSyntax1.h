@@ -1,4 +1,0 @@
-{{{[]}}}
-(asdfksdjfds)
-asdf{}
-(])

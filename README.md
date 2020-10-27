@@ -17,17 +17,21 @@ Assignment or exercise number: Assignment 3
 ## Source Files
 assign3.h
 
-main.cpp
+assign3.cpp
 
+EmptyStackException.h
+
+GenStack.h
+
+main.cpp
 
 
 ## Any known compile or runtime errors, code limitations, or deviations from the assignment specification
 N/A
 
 
-
 ## A list of all references used to complete the assignment, including peers
-
+Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
 
 
 ## Instructions for running the assignment.
@@ -35,5 +39,5 @@ N/A
 2. Start and attach compsci docker container
 3. Go to the directory/repository you cloned on computer
 4. Compile program: make all
-5. Run program: ./assign3.out
+5. Run program: ./assign3.out fileName  (where fileName is the file you want to analyze)
 6. Clear .out files: make realclean
