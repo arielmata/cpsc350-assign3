@@ -61,6 +61,7 @@ GenStack<T>::~GenStack(){
   delete myArray;
 }
 
+//Pushes an item onto the top of the stack
 template <typename T>
 void GenStack<T>::push(T data){
   if(isFull()){
@@ -70,6 +71,7 @@ void GenStack<T>::push(T data){
   myArray[++top] = data;
 }
 
+//Returns and removes an item from the top of the stack
 template <typename T>
 T GenStack<T>::pop(){
     if(isEmpty()){
@@ -80,6 +82,7 @@ T GenStack<T>::pop(){
     }
 }
 
+//Returns but does not remove an item from the top of the stack
 template <typename T>
 T GenStack<T>::peek(){
   if(isEmpty()){
@@ -89,21 +92,26 @@ T GenStack<T>::peek(){
   }
 }
 
+//Returns true if stack is full, otherwise returns false
 template <typename T>
 bool GenStack<T>::isFull(){
   return (top == mSize - 1);
 }
 
+//Returns true if stack is empty, otherwise returns false
 template <typename T>
 bool GenStack<T>::isEmpty(){
   return (top == -1);
 }
 
+//Returns the number of items in the stack
 template <typename T>
 int GenStack<T>::getSize(){
   return (top + 1);
 }
 
+//Resizes a stack by making a new stack with double the size and copying
+//everything over
 template <typename T>
 void GenStack<T>::resizeArray(){
   int mSize = 2*mSize;
@@ -117,6 +125,7 @@ void GenStack<T>::resizeArray(){
   delete newArray;
 }
 
+//Prints the items in the array
 template <typename T>
 void GenStack<T>::printArray(){
   cout << "S SIZE: " << getSize() << endl;

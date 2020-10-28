@@ -18,14 +18,14 @@ using namespace std;
 
 class SyntaxChecker{
   private:
-    GenStack<char> *myStack; //holds opening delimiters
-    int lineCount;
+    GenStack<char> *myStack; //holds opening delimiters {,(,[
+    int lineCount; //line number of file being analyzed
   public:
     SyntaxChecker(); //default constructor
     ~SyntaxChecker(); //destructor
 
     int checkSyntax(ifstream& ifs); //checks the syntax, returns -1 if syntax is fine, o.w. returns line number
 
-    char expectedDelim(); //returns the delimiter that was expected
-    char expectedDelim(char delim);
+    char expectedDelim(); //returns the closing delimiter that was expected
+    char expectedDelim(char delim); //returns the opening delimiter that was expected
 };

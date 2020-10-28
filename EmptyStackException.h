@@ -13,6 +13,7 @@ any language and report the location of any mismatched delimiters.
 #include <stdexcept>
 using namespace std;
 
+//EmptyStackException: Exception for throwing an error when stack is empty
 class EmptyStackException : public runtime_error{
   public:
     EmptyStackException(const char* message) : runtime_error(message){}
