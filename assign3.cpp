@@ -29,13 +29,42 @@ SyntaxChecker::~SyntaxChecker(){
 int SyntaxChecker::checkSyntax(ifstream& ifs){
   string line;
   bool breakWhile = false; //breakWhile = true if there is a syntax error while file doesn't end
+  //The variables below are used for finding places where single quotes, double quotes,
+  //and commented sections are found. That way we can ignore the demiliters in them
+  //since they are not a part of the code syntax.
+  bool foundSingleQuote = false, foundDoubleQuote = false, foundCommented = false;
   while(getline(ifs,line)){
     //check for opening brace or closing brace
     for(int i = 0; i < line.length(); ++i){
-      if(line[i] == '(' || line[i] == '{' || line[i] == '['){
+      if(line[i] == '/'){
+        //looking for commented section
+        if(line[i+1] == '/'){
+          break; //found // commented section, so we break for loop to ignore rest of line
+        }else if(line[i+1] == '*'){
+          foundCommented = true; //found /*  commented section
+        }
+      }else if(line[i] == '*' && line[i+1] == '/' && foundCommented){
+        foundCommented = false;
+      }else if(line[i] == '\''){
+        //found for single quotes
+        if(foundSingleQuote){
+          foundSingleQuote = false;
+        }else{
+          foundSingleQuote = true;
+        }
+      }else if(line[i] == '\"'){
+        //found for double quotes
+        if(foundDoubleQuote){
+          foundDoubleQuote = false;
+        }else{
+          foundDoubleQuote = true;
+        }
+      }else if((line[i] == '(' || line[i] == '{' || line[i] == '[') &&
+        !foundSingleQuote && !foundDoubleQuote && !foundCommented){
         //found opening delimiter, so push it to the stack
         myStack->push(line[i]);
-      }else if(line[i] == ')' || line[i] == '}' || line[i] == ']'){
+      }else if((line[i] == ')' || line[i] == '}' || line[i] == ']') &&
+        !foundSingleQuote && !foundDoubleQuote && !foundCommented){
         //found closing delimiter
         try{
           if(expectedDelim() != line[i]){
